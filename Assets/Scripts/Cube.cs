@@ -29,10 +29,6 @@ public class Cube : MonoBehaviour
         jumpingState = new JumpingState(this.player);
         runningState = new RunningState(this.player);
 
-        if (stateMachine != null) Debug.Log("machine");
-        if (idleState != null) Debug.Log("idle");
-        if (jumpingState != null) Debug.Log("jump");
-        if (runningState != null) Debug.Log("run");
         stateMachine.Initialize(idleState);
     }
 
@@ -58,7 +54,6 @@ public class Cube : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && isOnTheGround)
         {
             if (stateMachine.CurrentState != idleState) stateMachine.ChangeState(jumpingState);
-            // player.AddRelativeTorque(new Vector3(0, 100f, 0), );
             player.AddForce(new Vector3(0, jumpForce, 0));
         }
 
